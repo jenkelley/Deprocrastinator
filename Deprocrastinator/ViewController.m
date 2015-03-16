@@ -8,11 +8,12 @@
 
 #import "ViewController.h"
 
-@interface ViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface ViewController () <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *deprocrastinatorTableView;
 @property (strong, nonatomic) IBOutlet UITextField *toDoTextField;
 @property NSMutableArray *taskArray;
 @property NSMutableArray *colorsArray;
+@property NSIndexPath *deletedPath;
 
 @end
 
@@ -67,10 +68,28 @@
 
 - (void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.taskArray removeObjectAtIndex:indexPath.row];
-        [self.colorsArray removeObjectAtIndex:indexPath.row];
-        [tableView reloadData];
+        self.deletedPath = indexPath;
+        [self alertView];
     }
+}
+
+-(void)alertView {
+    UIAlertView *alert =[[UIAlertView alloc] initWithTitle:@"ALERT!"
+                                                   message:@"ARE YOU SUREEEEE"
+                                                  delegate:self
+                                         cancelButtonTitle:@"Cancel"
+                                         otherButtonTitles:@"Yes", nil];
+    [alert show];
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 1) {
+        [self.taskArray removeObjectAtIndex:self.deletedPath.row];
+        [self.colorsArray removeObjectAtIndex:self.deletedPath.row];
+        [self.deprocrastinatorTableView reloadData];
+        self.deletedPath = nil;
+    }
+
 }
 
 - (IBAction)swipeRight:(UISwipeGestureRecognizer *)sender {
