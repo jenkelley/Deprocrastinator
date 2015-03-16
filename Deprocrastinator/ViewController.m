@@ -28,7 +28,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 4;
+    return self.taskArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -42,9 +42,63 @@
     NSString *toDoText = self.toDoTextField.text;
     [self.taskArray addObject:toDoText];
 
-    [self.deprocrastinatorTableView reloadData]; 
+    [self.deprocrastinatorTableView reloadData];
+    self.toDoTextField.text = @"";
+    [self.view resignFirstResponder];
 
 
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *tappedCell = [tableView cellForRowAtIndexPath:indexPath];
+    if (<#condition#>) {
+        <#statements#>
+    }
+
+
+    tappedCell.textLabel.textColor = [UIColor greenColor];
+
+
+
+
+
+}
+- (IBAction)onEditButtonPressed:(UIBarButtonItem *)sender {
+    sender.title = @"Done";
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @end
