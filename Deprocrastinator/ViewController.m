@@ -10,6 +10,8 @@
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) IBOutlet UITableView *deprocrastinatorTableView;
+@property (strong, nonatomic) IBOutlet UITextField *toDoTextField;
+@property NSMutableArray *taskArray;
 
 @end
 
@@ -17,7 +19,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    self.taskArray = [NSMutableArray arrayWithObjects:
+                      @"Homework",
+                      @"This Shit",
+                      @"Cook Dinner",
+                      @"Buy a Dog", nil];
+
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -25,7 +32,19 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return;
+
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ToDoCell"];
+    cell.textLabel.text = [self.taskArray objectAtIndex:indexPath.row];
+    return cell;
+}
+
+- (IBAction)onAddButtonTapped:(UIBarButtonItem *)sender {
+    NSString *toDoText = self.toDoTextField.text;
+    [self.taskArray addObject:toDoText];
+
+    [self.deprocrastinatorTableView reloadData]; 
+
+
 }
 
 @end
