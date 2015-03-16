@@ -46,6 +46,7 @@
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="295-hw-3HI"/>
@@ -58,6 +59,9 @@
                                 <include reference="0Qk-Ly-S39"/>
                             </mask>
                         </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="d4T-nR-WCu" appends="YES" id="gPy-pY-u76"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="Jsw-f4-wo6">
                         <barButtonItem key="leftBarButtonItem" title="Edit" id="fb9-wr-bqA">
@@ -77,6 +81,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="d4T-nR-WCu">
+                    <connections>
+                        <action selector="swipeRight:" destination="vXZ-lx-hvc" id="gb1-pd-qQX"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="954" y="-388"/>
         </scene>

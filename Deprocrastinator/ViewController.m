@@ -75,20 +75,26 @@
         [tableView reloadData];
     }
 }
+- (IBAction)swipeRight:(UISwipeGestureRecognizer *)sender {
+    CGPoint swipeLocation = [sender locationInView:self.view];
+    if (sender.state == UIGestureRecognizerStateEnded){
+      NSIndexPath *indexPath =
+        [self.deprocrastinatorTableView indexPathForRowAtPoint:swipeLocation];
 
+      UITableViewCell *cell =
+        [self.deprocrastinatorTableView cellForRowAtIndexPath:indexPath];
 
+        cell.textLabel.textColor = [UIColor redColor];
 
+        if([cell.textLabel.textColor isEqual:[UIColor redColor]]){
+            cell.textLabel.textColor = [UIColor yellowColor];
+        }
+        else if ([cell.textLabel.textColor isEqual:[UIColor yellowColor]]){
+            cell.textLabel.textColor = [UIColor greenColor];
+        }
 
-
-
-
-
-
-
-
-
-
-
+    }
+}
 
 
 
