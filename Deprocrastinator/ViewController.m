@@ -49,15 +49,6 @@
 
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *tappedCell = [tableView cellForRowAtIndexPath:indexPath];
-
-
-    tappedCell.textLabel.textColor = [UIColor greenColor];
-
-}
-
-
 - (IBAction)onEditButtonPressed:(UIBarButtonItem *)sender {
 
     if ([sender.title isEqualToString:@"Edit"]) {
@@ -75,32 +66,42 @@
         [tableView reloadData];
     }
 }
+
 - (IBAction)swipeRight:(UISwipeGestureRecognizer *)sender {
-    CGPoint swipeLocation = [sender locationInView:self.view];
-    if (sender.state == UIGestureRecognizerStateEnded){
-      NSIndexPath *indexPath =
-        [self.deprocrastinatorTableView indexPathForRowAtPoint:swipeLocation];
+    CGPoint swipeLocation = [sender locationInView:self.deprocrastinatorTableView];
+    if (sender.state == UIGestureRecognizerStateEnded) {
+        NSIndexPath *indexPath = [self.deprocrastinatorTableView indexPathForRowAtPoint:swipeLocation];
+        UITableViewCell *cell = [self.deprocrastinatorTableView cellForRowAtIndexPath:indexPath];
 
-      UITableViewCell *cell =
-        [self.deprocrastinatorTableView cellForRowAtIndexPath:indexPath];
-
-        cell.textLabel.textColor = [UIColor redColor];
-
-        if([cell.textLabel.textColor isEqual:[UIColor redColor]]){
+        if([cell.textLabel.textColor isEqual:[UIColor redColor]]) {
             cell.textLabel.textColor = [UIColor yellowColor];
-        }
-        else if ([cell.textLabel.textColor isEqual:[UIColor yellowColor]]){
+        } else if ([cell.textLabel.textColor isEqual:[UIColor yellowColor]]) {
             cell.textLabel.textColor = [UIColor greenColor];
+        } else if ([cell.textLabel.textColor isEqual:[UIColor blackColor]]) {
+            cell.textLabel.textColor = [UIColor redColor];
+        } else if ([cell.textLabel.textColor isEqual:[UIColor greenColor]]) {
+            cell.textLabel.textColor = [UIColor blackColor];
         }
 
     }
 }
 
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
+
+
+
+
+}
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
 
 
 
 
 
+    return YES;
+
+}
 
 
 
