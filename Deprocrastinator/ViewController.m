@@ -39,25 +39,23 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ToDoCell"];
     cell.textLabel.text = [self.taskArray objectAtIndex:indexPath.row];
+    cell.textLabel.textColor = [self.colorsArray objectAtIndex:indexPath.row];
     return cell;
 }
 
 - (IBAction)onAddButtonTapped:(UIBarButtonItem *)sender {
     NSString *toDoText = self.toDoTextField.text;
     [self.taskArray addObject:toDoText];
+    [self.colorsArray addObject:[UIColor blackColor]];
 
     [self.deprocrastinatorTableView reloadData];
     self.toDoTextField.text = @"";
     [self.view resignFirstResponder];
-
-
 }
 
 - (IBAction)onEditButtonPressed:(UIBarButtonItem *)sender {
-
     if ([sender.title isEqualToString:@"Edit"]) {
         sender.title = @"Done";
         [self.deprocrastinatorTableView setEditing:YES animated:YES];
@@ -68,8 +66,9 @@
 }
 
 - (void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (editingStyle ==UITableViewCellEditingStyleDelete) {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
         [self.taskArray removeObjectAtIndex:indexPath.row];
+        [self.colorsArray removeObjectAtIndex:indexPath.row];
         [tableView reloadData];
     }
 }
@@ -82,7 +81,6 @@
 
         if([cell.textLabel.textColor isEqual:[UIColor redColor]]) {
             cell.textLabel.textColor = [UIColor yellowColor];
-            self.colorsArray = cell.textLabel.textColor;
         } else if ([cell.textLabel.textColor isEqual:[UIColor yellowColor]]) {
             cell.textLabel.textColor = [UIColor greenColor];
         } else if ([cell.textLabel.textColor isEqual:[UIColor blackColor]]) {
@@ -90,14 +88,17 @@
         } else if ([cell.textLabel.textColor isEqual:[UIColor greenColor]]) {
             cell.textLabel.textColor = [UIColor blackColor];
         }
-
+        [self.colorsArray replaceObjectAtIndex:indexPath.row withObject:cell.textLabel.textColor];
     }
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
     UITableViewCell *tempcell = [tableView cellForRowAtIndexPath:sourceIndexPath];
     [self.taskArray removeObjectAtIndex:sourceIndexPath.row];
-    [self.taskArray insertObject:tempcell.textLabel atIndex:destinationIndexPath.row];
+    [self.taskArray insertObject:tempcell.textLabel.text atIndex:destinationIndexPath.row];
+
+    [self.colorsArray removeObjectAtIndex:sourceIndexPath.row];
+    [self.colorsArray insertObject:tempcell.textLabel.textColor atIndex:destinationIndexPath.row];
 
 }
 
