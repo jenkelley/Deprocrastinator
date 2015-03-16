@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="n5k-6x-ZUc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -73,13 +74,13 @@
                                 <exclude reference="0Qk-Ly-S39"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="3IP-8O-h35"/>
-                                <exclude reference="WrN-Ep-rIu"/>
-                                <exclude reference="pmd-pn-Qso"/>
                                 <exclude reference="Fye-uH-nTF"/>
                                 <exclude reference="YEl-Kq-7fr"/>
                                 <exclude reference="gZ0-SK-AfH"/>
                                 <exclude reference="Yng-TY-xcI"/>
+                                <exclude reference="3IP-8O-h35"/>
+                                <exclude reference="WrN-Ep-rIu"/>
+                                <exclude reference="pmd-pn-Qso"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -88,13 +89,13 @@
                                 <include reference="0Qk-Ly-S39"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="3IP-8O-h35"/>
-                                <include reference="WrN-Ep-rIu"/>
-                                <include reference="pmd-pn-Qso"/>
                                 <include reference="Fye-uH-nTF"/>
                                 <include reference="YEl-Kq-7fr"/>
                                 <include reference="gZ0-SK-AfH"/>
                                 <include reference="Yng-TY-xcI"/>
+                                <include reference="3IP-8O-h35"/>
+                                <include reference="WrN-Ep-rIu"/>
+                                <include reference="pmd-pn-Qso"/>
                             </mask>
                         </variation>
                         <connections>

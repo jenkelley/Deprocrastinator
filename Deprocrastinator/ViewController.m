@@ -12,6 +12,7 @@
 @property (strong, nonatomic) IBOutlet UITableView *deprocrastinatorTableView;
 @property (strong, nonatomic) IBOutlet UITextField *toDoTextField;
 @property NSMutableArray *taskArray;
+@property NSMutableArray *colorsArray;
 
 @end
 
@@ -24,6 +25,12 @@
                       @"This Shit",
                       @"Cook Dinner",
                       @"Buy a Dog", nil];
+    self.colorsArray = [NSMutableArray arrayWithObjects:
+                        [UIColor blackColor],
+                        [UIColor blackColor],
+                        [UIColor blackColor],
+                        [UIColor blackColor],
+                        nil];
 
 }
 
@@ -75,6 +82,7 @@
 
         if([cell.textLabel.textColor isEqual:[UIColor redColor]]) {
             cell.textLabel.textColor = [UIColor yellowColor];
+            self.colorsArray = cell.textLabel.textColor;
         } else if ([cell.textLabel.textColor isEqual:[UIColor yellowColor]]) {
             cell.textLabel.textColor = [UIColor greenColor];
         } else if ([cell.textLabel.textColor isEqual:[UIColor blackColor]]) {
@@ -87,11 +95,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
-    NSString *tempcell = [self.taskArray objectAtIndex:sourceIndexPath.row];
-    UIColor *tempColor = [self.taskArray objectAtIndex:sourceIndexPath.row];
-
+    UITableViewCell *tempcell = [tableView cellForRowAtIndexPath:sourceIndexPath];
     [self.taskArray removeObjectAtIndex:sourceIndexPath.row];
-    [self.taskArray insertObject:tempcell atIndex:destinationIndexPath.row];
+    [self.taskArray insertObject:tempcell.textLabel atIndex:destinationIndexPath.row];
 
 }
 
