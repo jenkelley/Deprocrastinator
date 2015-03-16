@@ -87,20 +87,16 @@
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
+    NSString *tempcell = [self.taskArray objectAtIndex:sourceIndexPath.row];
+    UIColor *tempColor = [self.taskArray objectAtIndex:sourceIndexPath.row];
 
-
-
+    [self.taskArray removeObjectAtIndex:sourceIndexPath.row];
+    [self.taskArray insertObject:tempcell atIndex:destinationIndexPath.row];
 
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-
-
-
-
-
     return YES;
-
 }
 
 

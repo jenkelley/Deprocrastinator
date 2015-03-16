@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14D72i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="n5k-6x-ZUc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="n5k-6x-ZUc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -28,9 +29,6 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="64" width="400" height="536"/>
-                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="vXZ-lx-hvc" id="TJL-8U-rf2"/>
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="N7q-RZ-PyK"/>
@@ -38,25 +36,65 @@
                             </tableView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Qk-Ly-S39">
                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="368" id="5VZ-WZ-O4o"/>
+                                    <constraint firstAttribute="height" constant="30" id="Mbe-4b-wXq"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="16" y="72" width="368" height="30"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="5VZ-WZ-O4o"/>
+                                        <exclude reference="Mbe-4b-wXq"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="5VZ-WZ-O4o"/>
+                                        <include reference="Mbe-4b-wXq"/>
+                                    </mask>
                                 </variation>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="295-hw-3HI" secondAttribute="trailing" id="3IP-8O-h35"/>
+                            <constraint firstItem="0Qk-Ly-S39" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" id="Fye-uH-nTF"/>
+                            <constraint firstItem="295-hw-3HI" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="WrN-Ep-rIu"/>
+                            <constraint firstItem="0Qk-Ly-S39" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="YEl-Kq-7fr"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="295-hw-3HI" secondAttribute="bottom" id="Yng-TY-xcI"/>
+                            <constraint firstItem="0Qk-Ly-S39" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="gZ0-SK-AfH"/>
+                            <constraint firstItem="295-hw-3HI" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="pmd-pn-Qso"/>
+                        </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="295-hw-3HI"/>
                                 <exclude reference="0Qk-Ly-S39"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="3IP-8O-h35"/>
+                                <exclude reference="WrN-Ep-rIu"/>
+                                <exclude reference="pmd-pn-Qso"/>
+                                <exclude reference="Fye-uH-nTF"/>
+                                <exclude reference="YEl-Kq-7fr"/>
+                                <exclude reference="gZ0-SK-AfH"/>
+                                <exclude reference="Yng-TY-xcI"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="295-hw-3HI"/>
                                 <include reference="0Qk-Ly-S39"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="3IP-8O-h35"/>
+                                <include reference="WrN-Ep-rIu"/>
+                                <include reference="pmd-pn-Qso"/>
+                                <include reference="Fye-uH-nTF"/>
+                                <include reference="YEl-Kq-7fr"/>
+                                <include reference="gZ0-SK-AfH"/>
+                                <include reference="Yng-TY-xcI"/>
                             </mask>
                         </variation>
                         <connections>
