@@ -48,12 +48,15 @@
 
 - (IBAction)onAddButtonTapped:(UIBarButtonItem *)sender {
     NSString *toDoText = self.toDoTextField.text;
+    if ([toDoText isEqualToString:@""]) {
+        [self alertViewCancel];
+    } else if (![toDoText isEqualToString:@""]) {
     [self.taskArray addObject:toDoText];
     [self.colorsArray addObject:[UIColor blackColor]];
-
     [self.deprocrastinatorTableView reloadData];
     self.toDoTextField.text = @"";
     [self.view resignFirstResponder];
+    }
 }
 
 - (IBAction)onEditButtonPressed:(UIBarButtonItem *)sender {
@@ -79,17 +82,28 @@
                                                   delegate:self
                                          cancelButtonTitle:@"Cancel"
                                          otherButtonTitles:@"Yes", nil];
+    alert.tag = 1;
     [alert show];
 }
 
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if (buttonIndex == 1) {
-        [self.taskArray removeObjectAtIndex:self.deletedPath.row];
-        [self.colorsArray removeObjectAtIndex:self.deletedPath.row];
-        [self.deprocrastinatorTableView reloadData];
-        self.deletedPath = nil;
-    }
+-(void)alertViewCancel {
+    UIAlertView *alertCancel = [[UIAlertView alloc] initWithTitle:@"ALERT"
+                                                          message:@"This is Empty, silly goose"
+                                                         delegate:self
+                                                cancelButtonTitle:@"Cancel" otherButtonTitles:nil, nil];
+    [alertCancel show];
+}
 
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (alertView.tag == 1 && buttonIndex == 1) {
+
+            [self.taskArray removeObjectAtIndex:self.deletedPath.row];
+            [self.colorsArray removeObjectAtIndex:self.deletedPath.row];
+            [self.deprocrastinatorTableView reloadData];
+            self.deletedPath = nil;
+
+
+    }
 }
 
 - (IBAction)swipeRight:(UISwipeGestureRecognizer *)sender {
